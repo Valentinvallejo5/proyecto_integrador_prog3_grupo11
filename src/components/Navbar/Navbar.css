@@ -1,0 +1,60 @@
+.Navigation {
+  background-color: #d2b48c; /* marrón clarito */
+  width: 100%;
+  position: fixed;  /* lo deja fijo arriba */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* se asegura de que quede encima del contenido */
+  padding: 15px 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* sombrita elegante */
+}
+.carrito {
+  width: 28px;         /* tamaño controlado */
+  height: auto;        /* mantiene proporción */
+  fill: #4e342e;       /* marrón oscuro para combinar */
+  cursor: pointer;     /* cursor de mano */
+  transition: transform 0.3s ease, fill 0.3s ease;
+  margin-left: 15px;   /* separación del resto del menú */
+}
+
+.carrito:hover {
+  transform: scale(1.2);  /* efecto zoom */
+  fill: #3e2723;          /* marrón más intenso en hover */
+}
+.logo {
+  width: 50px;     /* lo achicamos */
+  height: auto;    /* mantiene proporción */
+  margin-right: 20px; /* espacio entre el logo y los links */
+  cursor: pointer; /* cambia el cursor al pasar por arriba */
+  transition: transform 0.3s ease;
+}
+.barrita {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.barrita li {
+  margin: 0 20px;
+}
+
+.barrita a {
+  text-decoration: none;
+  color: #4e342e; /* marrón más oscuro */
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.barrita a:hover {
+  color: #3e2723;
+  border-bottom: 2px solid #3e2723; /* subrayado animado */
+}
+
+.barrita li:last-child {
+  margin-left: auto; /* carrito se va a la derecha */
+  margin-right: 60px;
+}

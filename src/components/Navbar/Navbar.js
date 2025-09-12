@@ -4,7 +4,7 @@ import NavItems from '../NavItems/NavItems';
 
 function Navbar(){
       const opcionesMenu = [
-    { name: "Peliculas", link: "/" },
+    { name: "Home", link: "/" },
     { name: "Peliculas destacadas", link: "/peliculas" },
     { name: "Series", link: "/series"},
      { name: "Favoritas", link: "/favoritas"

@@ -1,10 +1,11 @@
-import React from 'react';
-import './Footer.css';
+import React from "react";
+import "./Footer.css";
 
 function Footer() {
   return (
     <footer className="footer">
-      <p>© 2025 Mi App de Películas. Todos los derechos reservados.</p>
+      <p>Proyecto Integrador Grupo 11</p>
+      <p>Integrantes: Valentin Vallejo, Mateo Fascetto y Oscar Santos</p>
     </footer>
   );
 }

@@ -1,0 +1,29 @@
+
+:root{
+  --nav-h:64px;
+}
+
+.home{
+  padding: calc(var(--nav-h) + 16px) 16px 24px; 
+}
+
+.bloque{ margin-bottom:32px; }
+
+.bloque__header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:20px;
+}
+
+
+
+.buscador{
+  margin: 12px 0 24px;
+}

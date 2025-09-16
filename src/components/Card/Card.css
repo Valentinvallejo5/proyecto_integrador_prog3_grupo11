@@ -1,0 +1,19 @@
+.card {
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  background: #fff;
+}
+.card img {
+  width: 100%;
+  border-radius: 4px;
+}
+.card h3 {
+  font-size: 18px;
+  margin: 8px 0;
+}
+.card button, .card a {
+  margin-top: 8px;
+  display: block;
+}

@@ -1,0 +1,17 @@
+.listado { padding: 100px 16px 24px; max-width: 1200px; margin: 0 auto; }
+.filtro { margin: 12px 0 20px; }
+.filtro input {
+  width: 100%; max-width: 380px; height: 40px; padding: 0 12px;
+  border: 1px solid #cdbb9f; border-radius: 6px; outline: none;
+}
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 1024px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .grid { grid-template-columns: 1fr; } }
+.acciones { display: flex; justify-content: center; margin: 20px 0 8px; }
+.btn {
+  height: 40px; padding: 0 18px; border: 1px solid #7a5a36;
+  background: #7a5a36; color: #fff; border-radius: 6px; cursor: pointer;
+}
+.btn:hover { filter: brightness(0.95); }
+.aviso { padding: 32px 0; text-align: center; }

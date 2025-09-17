@@ -1,8 +1,10 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Home from "./screens/Home/Home";
+import Peliculas from "./screens/Peliculas/Peliculas";
+import Series from "./screens/Series/Series";
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/peliculas" exact component={Peliculas} />
+        <Route path="/series" exact component={Series} />
       </Switch>
       <Footer />
     </div>

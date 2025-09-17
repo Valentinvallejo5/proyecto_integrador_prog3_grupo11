@@ -58,7 +58,7 @@ class Series extends Component {
   }
 
   render() {
-    const { items, filtro, cargando, error } = this.state;
+    const { items, filtro, error } = this.state;
 
     const listaFiltrada = items.filter(lista =>
       (lista.name || "").toLowerCase().includes(filtro.toLowerCase())
@@ -78,7 +78,6 @@ class Series extends Component {
           <button>Filtrar</button>
         </form>
 
-        {cargando && items.length === 0 ? <p>Cargando...</p> : null}
         {error ? <p>{error}</p> : null}
 
         <section className="grid">

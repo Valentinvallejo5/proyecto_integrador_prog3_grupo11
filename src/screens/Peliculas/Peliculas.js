@@ -89,6 +89,7 @@ class Peliculas extends Component {
               titulo={peli.title}
               img={peli.poster_path}
               descripcion={peli.overview}
+              tipo="pelicula"
             />
           ))}
         </section>

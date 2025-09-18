@@ -89,6 +89,7 @@ class Series extends Component {
               titulo={serie.name}
               img={serie.poster_path}
               descripcion={serie.overview}
+              tipo="serie"
             />
           ))}
         </section>

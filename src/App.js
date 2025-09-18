@@ -6,11 +6,9 @@ import Home from "./screens/Home/Home";
 import Peliculas from "./screens/Peliculas/Peliculas";
 import Series from "./screens/Series/Series";
 import DetailPeliculas from "./screens/DetailPeliculas/DetailPeliculas";
-
+import Favoritos from "./screens/Favoritos/Favoritos";
 
 function App() {
-
-  
   return (
     <div className="App">
       <Navbar />
@@ -18,7 +16,8 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/peliculas" exact component={Peliculas} />
         <Route path="/series" exact component={Series} />
-        <Route path="/peliculas/:id" exact component= {DetailPeliculas} />
+        <Route path="/peliculas/:id" exact component={DetailPeliculas} />
+        <Route path="/favoritos" exact component={Favoritos} />
       </Switch>
       <Footer />
     </div>

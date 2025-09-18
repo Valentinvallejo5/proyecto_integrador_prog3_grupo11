@@ -93,7 +93,7 @@ class Peliculas extends Component {
           ))}
         </section>
 
-        <div style={{ marginTop: 16 }}>
+        <div>
           <button onClick={() => this.cargarMas()} disabled={cargando}>Cargar más</button>
         </div>
       </main>

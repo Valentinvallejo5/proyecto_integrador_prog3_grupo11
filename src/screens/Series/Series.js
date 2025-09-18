@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "../../components/Card/Card";
+import "./Series.css"; 
 
 class Series extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Series extends Component {
   }
 
   cargarPagina(numeroPagina) {
-    const url = `https://api.themoviedb.org/3/tv/popular?language=es-ES&page=${numeroPagina}`;
+    const url =  `https://api.themoviedb.org/3/tv/popular?language=es-ES&page=${numeroPagina}`;
     const options = {
       method: "GET",
       headers: {
@@ -31,8 +32,8 @@ class Series extends Component {
     fetch(url, options)
       .then(res => res.json())
       .then(data => {
-        this.setState(prev => ({
-          items: prev.items.concat(data.results || []),
+        this.setState(prevState => ({
+          items: prevState.items.concat(data.results || []),
           cargando: false,
           error: ""
         }));
@@ -58,20 +59,20 @@ class Series extends Component {
   }
 
   render() {
-    const { items, filtro, error } = this.state;
+    const { items, filtro, error, cargando } = this.state;
 
-    const listaFiltrada = items.filter(lista =>
-      (lista.name || "").toLowerCase().includes(filtro.toLowerCase())
+    const listaFiltrada = items.filter(serie =>
+      (serie.name || "").toLowerCase().includes(filtro.toLowerCase())
     );
 
     return (
       <main className="home">
-        <h2>Series populares</h2>
+        <h2>Series</h2>
 
-        <form onSubmit={(e) => this.manejarSubmit(e)} className="buscador">
+        <form onSubmit={(e) => this.manejarSubmit(e)} className="buscador" style={{ marginTop: 12 }}>
           <input
             type="text"
-            placeholder="Filtrar por nombre…"
+            placeholder="Filtrar por título…"
             value={filtro}
             onChange={(e) => this.controlarInput(e)}
           />
@@ -81,7 +82,7 @@ class Series extends Component {
         {error ? <p>{error}</p> : null}
 
         <section className="grid">
-          {listaFiltrada.slice(0, 100).map(serie => (
+          {listaFiltrada.map(serie => (
             <Card
               key={serie.id}
               id={serie.id}
@@ -92,8 +93,8 @@ class Series extends Component {
           ))}
         </section>
 
-        <div>
-          <button onClick={() => this.cargarMas()}>Cargar más</button>
+        <div style={{ marginTop: 16 }}>
+          <button onClick={() => this.cargarMas()} disabled={cargando}>Cargar mas</button>
         </div>
       </main>
     );

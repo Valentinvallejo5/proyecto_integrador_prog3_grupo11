@@ -40,7 +40,7 @@ class Home extends Component {
         <section className="bloque">
           <h2>Películas Populares</h2>
           <div className="grid">
-            {this.state.populares.slice(0, 4).map((peli) => (
+            {this.state.populares.map((peli) => (
               <Card
                 key={peli.id}
                 id={peli.id}
@@ -55,7 +55,7 @@ class Home extends Component {
         <section className="bloque">
           <h2>Películas en Cartelera</h2>
           <div className="grid">
-            {this.state.cartelera.slice(0, 4).map((peli) => (
+            {this.state.cartelera.map((peli) => (
               <Card
                 key={peli.id}
                 id={peli.id}

@@ -19,7 +19,7 @@ class Buscador extends Component {
 
   render() {
     return (
-      <form onSubmit={(e) => this.controlarForm(e)} className="buscador">
+      <form onSubmit= {(e) => this.controlarForm(e)} className="buscador">
         <input
           type="text"
           placeholder="Buscar película..."

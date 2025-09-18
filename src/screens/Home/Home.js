@@ -6,10 +6,7 @@ import "./Home.css";
 class Home extends Component {
   constructor() {
     super();
-    this.state = {
-      populares: [],
-      cartelera: []
-    };
+    this.state = {populares: [], cartelera: [] };
   }
 
   componentDidMount() {
@@ -17,19 +14,20 @@ class Home extends Component {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjOGM4OTkyODcwY2ExYjllMGY0MWQ5NmVhNmMwNjEwNiIsIm5iZiI6MTc1NzA4MDI1NC43ODEsInN1YiI6IjY4YmFlYWJlNTcyYzY5ZDkyNDk4YjM3YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VtGrSfEpLxvt4jMrXXJNe3jdRWBiJI9xBhl7WNP7Uyk "
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjOGM4OTkyODcwY2ExYjllMGY0MWQ5NmVhNmMwNjEwNiIsIm5iZiI6MTc1NzA4MDI1NC43ODEsInN1YiI6IjY4YmFlYWJlNTcyYzY5ZDkyNDk4YjM3YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VtGrSfEpLxvt4jMrXXJNe3jdRWBiJI9xBhl7WNP7Uyk"
       }
     };
 
     fetch("https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1", options)
       .then((res) => res.json())
-      .then((data) => this.setState({ populares: data.results }))
-      .catch((err) => console.error(err));
+      .then((data) => this.setState({ populares: data.results || [] }))
+      .catch(() => {});
 
     fetch("https://api.themoviedb.org/3/movie/now_playing?language=es-ES&page=1", options)
       .then((res) => res.json())
-      .then((data) => this.setState({ cartelera: data.results }))
-      .catch((err) => console.error(err));
+      .then((data) => this.setState({ cartelera: data.results || [] }))
+      .catch(() => {});
   }
 
   render() {
@@ -47,6 +45,7 @@ class Home extends Component {
                 titulo={peli.title}
                 img={peli.poster_path}
                 descripcion={peli.overview}
+    
               />
             ))}
           </div>
@@ -62,6 +61,7 @@ class Home extends Component {
                 titulo={peli.title}
                 img={peli.poster_path}
                 descripcion={peli.overview}
+                
               />
             ))}
           </div>

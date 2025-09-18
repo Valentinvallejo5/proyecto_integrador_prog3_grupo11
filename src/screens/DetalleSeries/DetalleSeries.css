@@ -1,0 +1,51 @@
+.unaCard {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #fafafa; 
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+.unaCard img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.unaCard h2 {
+  font-size: 1.8rem;
+  color: #2a3d66;
+  margin-bottom: 12px;
+}
+
+.unaCard p {
+  font-size: 1rem;
+  color: #444;
+  margin: 6px 0;
+}
+
+.unaCard strong {
+  color: #2a3d66;
+}
+
+.unaCard ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.unaCard li {
+  background: #e6ecf5;
+  display: inline-block;
+  margin: 4px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #2a3d66;
+}

@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import Card from "../../components/Card/Card";
-import "./Peliculas.css"; 
 
 class Peliculas extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      items: [],
-      page: 1,
-      filtro: "",
-      cargando: true,
-      error: ""
-    };
+    this.state = { items: [], page: 1, filtro: "", cargando: true, error: "" };
   }
 
   componentDidMount() {
@@ -19,7 +12,7 @@ class Peliculas extends Component {
   }
 
   cargarPagina(numeroPagina) {
-    const url =  `https://api.themoviedb.org/3/movie/popular?language=es-ES&page=${numeroPagina}`;
+    const url = `https://api.themoviedb.org/3/movie/popular?language=es-ES&page=${numeroPagina}`;
     const options = {
       method: "GET",
       headers: {
@@ -30,22 +23,20 @@ class Peliculas extends Component {
     };
 
     fetch(url, options)
-      .then(res => res.json())
-      .then(data => {
-        this.setState(prevState => ({
-          items: prevState.items.concat(data.results || []),
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState((prev) => ({
+          items: prev.items.concat(data.results || []),
           cargando: false,
           error: ""
         }));
       })
-      .catch(() =>
-        this.setState({ cargando: false, error: "No se pudo cargar el listado." })
-      );
+      .catch(() => this.setState({ cargando: false, error: "No se pudo cargar el listado." }));
   }
 
   cargarMas() {
     this.setState(
-      prev => ({ page: prev.page + 1, cargando: true }),
+      (prev) => ({ page: prev.page + 1, cargando: true }),
       () => this.cargarPagina(this.state.page)
     );
   }
@@ -59,17 +50,14 @@ class Peliculas extends Component {
   }
 
   render() {
-    const { items, filtro, error, cargando } = this.state;
-
-    const listaFiltrada = items.filter(p =>
-      (p.title || "").toLowerCase().includes(filtro.toLowerCase())
-    );
+    const { items, filtro, error } = this.state;
+    const listaFiltrada = items.filter((p) => (p.title || "").toLowerCase().includes(filtro.toLowerCase()));
 
     return (
       <main className="home">
-        <h2>Películas</h2>
+        <h2>Películas destacadas</h2>
 
-        <form onSubmit={(e) => this.manejarSubmit(e)} className="buscador" style={{ marginTop: 12 }}>
+        <form onSubmit={(e) => this.manejarSubmit(e)} className="buscador">
           <input
             type="text"
             placeholder="Filtrar por título…"
@@ -82,19 +70,20 @@ class Peliculas extends Component {
         {error ? <p>{error}</p> : null}
 
         <section className="grid">
-          {listaFiltrada.map(peli => (
+          {listaFiltrada.map((peli) => (
             <Card
               key={peli.id}
               id={peli.id}
               titulo={peli.title}
               img={peli.poster_path}
               descripcion={peli.overview}
+              tipo="pelicula"
             />
           ))}
         </section>
 
         <div>
-          <button onClick={() => this.cargarMas()} disabled={cargando}>Cargar más</button>
+          <button onClick={() => this.cargarMas()}>Cargar más</button>
         </div>
       </main>
     );

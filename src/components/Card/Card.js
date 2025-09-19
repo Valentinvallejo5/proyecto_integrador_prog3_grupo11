@@ -8,12 +8,41 @@ class Card extends Component {
     this.state = { verMas: false, favorito: false };
   }
 
+  componentDidMount() {
+    const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+    const existe = favoritos.some(item => item.id === this.props.id && item.tipo === this.props.tipo);
+    if (existe) {
+      this.setState({ favorito: true });
+    }
+  }
+
   toggleVerMas() {
     this.setState({ verMas: !this.state.verMas });
   }
 
   toggleFavorito() {
-    this.setState({ favorito: !this.state.favorito });
+    let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+    if (this.state.favorito) {
+     
+      favoritos = favoritos.filter(item => !(item.id === this.props.id && item.tipo === this.props.tipo));
+    } else {
+     
+      const nuevo = {
+        id: this.props.id,
+        titulo: this.props.titulo,
+        img: this.props.img,
+        descripcion: this.props.descripcion,
+        tipo: this.props.tipo
+      };
+      favoritos.push(nuevo);
+    }
+
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+    this.setState({ favorito: !this.state.favorito }, () => {
+      if (this.props.onUpdate) this.props.onUpdate();
+    });
   }
 
   render() {

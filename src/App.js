@@ -10,12 +10,13 @@ import Series from "./screens/Series/Series";
 import Favoritos from "./screens/Favoritos/Favoritos";
 import DetallePeliculas from "./screens/DetallePeliculas/DetallePeliculas";
 import DetalleSeries from "./screens/DetalleSeries/DetalleSeries";
-
+import NotFound from "./screens/NotFound/NotFound";
 
 
 function App() {
   return (
     <div className="App">
+      <React.Fragment>
       <Navbar />
 
       <Switch>
@@ -26,11 +27,12 @@ function App() {
         <Route path="/peliculas/:id" component={DetallePeliculas} />
         <Route path="/series/:id" component={DetalleSeries} />
         <Route path="/favoritos" component={Favoritos} />
-        
+        <Route component={NotFound} />
 
       </Switch>
 
       <Footer />
+      </React.Fragment>
     </div>
   );
 }

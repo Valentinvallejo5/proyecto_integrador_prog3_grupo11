@@ -1,0 +1,53 @@
+.NotFound {
+  max-width: 720px;
+  margin: 100px auto 40px;   
+  padding: 28px 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+.NotFound h1 {
+  font-size: 2rem;
+  color: #222;
+  margin: 0 0 12px;
+}
+
+.NotFound p {
+  color: #444;
+  margin: 0 0 20px;
+}
+
+.NotFound a {
+  display: inline-block;
+  background: #7a5a36;      
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #7a5a36;
+  transition: filter 0.2s ease, transform 0.05s ease;
+}
+
+.NotFound a:hover {
+  filter: brightness(0.95);
+}
+
+.NotFound a:active {
+  transform: translateY(1px);
+}
+
+
+@media (max-width: 640px) {
+  .NotFound {
+    margin: 88px 16px 24px;
+    padding: 22px 18px;
+  }
+
+  .NotFound h1 {
+    font-size: 1.6rem;
+  }
+}

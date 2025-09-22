@@ -64,7 +64,6 @@ class Series extends Component {
             value={filtro}
             onChange={(e) => this.controlarInput(e)}
           />
-          <button>Filtrar</button>
         </form>
 
         {error ? <p>{error}</p> : null}

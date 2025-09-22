@@ -11,6 +11,7 @@ import Favoritos from "./screens/Favoritos/Favoritos";
 import DetallePeliculas from "./screens/DetallePeliculas/DetallePeliculas";
 import DetalleSeries from "./screens/DetalleSeries/DetalleSeries";
 import NotFound from "./screens/NotFound/NotFound";
+import ResultadoBuscador from "./screens/ResultadoBuscador/ResultadoBuscador";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/peliculas/:id" component={DetallePeliculas} />
         <Route path="/series/:id" component={DetalleSeries} />
         <Route path="/favoritos" component={Favoritos} />
+        <Route path="/resultados/:tipo/:query" component={ResultadoBuscador} exact={true} />
         <Route component={NotFound} />
 
       </Switch>

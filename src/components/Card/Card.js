@@ -10,7 +10,11 @@ class Card extends Component {
 
   componentDidMount() {
     const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-    const existe = favoritos.some(item => item.id === this.props.id && item.tipo === this.props.tipo);
+    const existe =
+      favoritos.filter(
+        item => item.id === this.props.id && item.tipo === this.props.tipo
+      ).length > 0;
+
     if (existe) {
       this.setState({ favorito: true });
     }
@@ -24,10 +28,10 @@ class Card extends Component {
     let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
     if (this.state.favorito) {
-     
-      favoritos = favoritos.filter(item => !(item.id === this.props.id && item.tipo === this.props.tipo));
+      favoritos = favoritos.filter(
+        item => !(item.id === this.props.id && item.tipo === this.props.tipo)
+      );
     } else {
-     
       const nuevo = {
         id: this.props.id,
         titulo: this.props.titulo,
@@ -47,8 +51,12 @@ class Card extends Component {
 
   render() {
     const esSerie = this.props.tipo === "serie";
-    const rutaDetalle = esSerie ? `/series/${this.props.id}` : `/peliculas/${this.props.id}`;
-    const imagen = this.props.img ? `https://image.tmdb.org/t/p/w342${this.props.img}` : "/img/placeholder.jpg";
+    const rutaDetalle = esSerie ?
+      `/series/${this.props.id} `
+      :`/peliculas/${this.props.id}`;
+    const imagen = this.props.img
+      ? ` https://image.tmdb.org/t/p/w342${this.props.img}`
+      : "/img/placeholder.jpg";
 
     return (
       <article className="card">
@@ -63,11 +71,13 @@ class Card extends Component {
         <Link to={rutaDetalle}>Ir a detalle</Link>
 
         <button onClick={() => this.toggleFavorito()}>
-          {this.state.favorito ? "Quitar de Favoritos" : "Agregar a Favoritos"}
+          {this.state.favorito
+            ? "Quitar de Favoritos"
+            : "Agregar a Favoritos"}
         </button>
       </article>
     );
   }
 }
 
-export default Card;
+export default Card;

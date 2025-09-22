@@ -16,10 +16,15 @@ class Favoritos extends Component {
   }
 
   cargarFavoritos() {
-    const favs = JSON.parse(localStorage.getItem("favoritos")) || [];
-    const peliculas = favs.filter(item => item.tipo === "pelicula");
-    const series = favs.filter(item => item.tipo === "serie");
-    this.setState({ peliculas, series });
+    let favs = [];
+    if (localStorage.getItem("favoritos")) {
+      favs = JSON.parse(localStorage.getItem("favoritos"));
+    }
+
+    const peliculas = favs.filter((item) => item.tipo === "pelicula");
+    const series = favs.filter((item) => item.tipo === "serie");
+
+    this.setState({ peliculas: peliculas, series: series });
   }
 
   render() {
@@ -32,7 +37,7 @@ class Favoritos extends Component {
           {peliculas.length === 0 ? (
             <p className="mensaje">No tienes películas en favoritos.</p>
           ) : (
-            peliculas.map(peli => (
+            peliculas.map((peli) => (
               <Card
                 key={peli.id}
                 id={peli.id}
@@ -51,7 +56,7 @@ class Favoritos extends Component {
           {series.length === 0 ? (
             <p className="mensaje">No tienes series en favoritos.</p>
           ) : (
-            series.map(serie => (
+            series.map((serie) => (
               <Card
                 key={serie.id}
                 id={serie.id}
@@ -69,4 +74,4 @@ class Favoritos extends Component {
   }
 }
 
-export default Favoritos;
+export default Favoritos;

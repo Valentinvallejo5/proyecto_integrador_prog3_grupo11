@@ -6,7 +6,11 @@ import "./Home.css";
 class Home extends Component {
   constructor() {
     super();
-    this.state = {populares: [], cartelera: [] };
+    this.state = {
+      populares: [],
+      cartelera: [],
+      cargando: true
+    };
   }
 
   componentDidMount() {
@@ -28,9 +32,22 @@ class Home extends Component {
       .then((res) => res.json())
       .then((data) => this.setState({ cartelera: data.results || [] }))
       .catch(() => {});
+
+    setTimeout(() => {
+      this.setState({ cargando: false });
+    }, 1000);
   }
 
   render() {
+    if (this.state.cargando) {
+      return (
+        <div className="loading-container">
+          <img src="/gif/loading.gif" alt="Cargando..." className="loading-gif" />
+          <h2 className="loading">Cargando...</h2>
+        </div>
+      );
+    }
+
     return (
       <main className="home">
         <Buscador />
@@ -45,7 +62,6 @@ class Home extends Component {
                 titulo={peli.title}
                 img={peli.poster_path}
                 descripcion={peli.overview}
-    
               />
             ))}
           </div>
@@ -61,7 +77,6 @@ class Home extends Component {
                 titulo={peli.title}
                 img={peli.poster_path}
                 descripcion={peli.overview}
-                
               />
             ))}
           </div>
@@ -71,4 +86,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Home;
